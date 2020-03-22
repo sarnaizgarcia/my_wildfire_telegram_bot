@@ -10,10 +10,6 @@ class ImageConnetion:
             datastore = json.load(f)
         return datastore
 
-    # método que recibe como parámetro URL, método http, params url (query params)
-    # y un cuerpo de petición opcional. Lee el fichero de config,
-    # monta url y hace la petición
-
     def request(self, url, method, query_params=None, request_body=None):
         dataset = self._read_json_file()
         base_url = dataset.get('base_url')
@@ -26,9 +22,14 @@ class ImageConnetion:
 
             final_url += qstr
 
-        response = requests.method(final_url)
+        if method == 'post':
+            response = requests.post(final_url, json=request_body)
+        elif method == 'get':
+            response = requests.get(final_url)
 
-        return response
+        if response.status_code != 200:
+            raise Exception
+        return response.request.body
 
 
 image_connection = ImageConnetion()
