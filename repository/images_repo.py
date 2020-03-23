@@ -17,7 +17,7 @@ class ImagesRepo:
         try:
             image_result = image_connection.request(
                 '/images', 'post', query_params=None, request_body=images_data)
-            return {'message': image_result}
+            return image_result
         except Exception:
             print(traceback.format_exc())
             return {'message': 'Error while creating images.'}
@@ -33,6 +33,19 @@ class ImagesRepo:
         except Exception:
             print(traceback.format_exc())
             return {'message': 'Error while getting images.'}
+
+    def question_request(self, answer):
+        answer_data = {
+            'answer': answer
+        }
+
+        try:
+            answer_result = image_connection.request(
+                '/answer', 'post', query_params=None, request_body=answer_data)
+            return answer_result
+        except Exception:
+            print(traceback.format_exc())
+            return {'message': 'Error getting the answer.'}
 
 
 images_repo = ImagesRepo()
