@@ -25,8 +25,13 @@ class ImagesRepo:
     def request_image(self):
         try:
             image_data = image_connection.request('/images', 'get')
-            return earth_images.get_earth_images(image_data.get('url'))
+            image = earth_images.get_earth_images(image_data['url'])
+            return {
+                'image': image,
+                'message': 'Ok'
+            }
         except Exception:
+            print(traceback.format_exc())
             return {'message': 'Error while getting images.'}
 
 

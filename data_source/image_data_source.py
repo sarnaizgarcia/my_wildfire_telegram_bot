@@ -24,12 +24,13 @@ class ImageConnetion:
 
         if method == 'post':
             response = requests.post(final_url, json=request_body)
+            result = response.request.body
         elif method == 'get':
             response = requests.get(final_url)
-
+            result = json.loads(response.text)
         if response.status_code != 200:
             raise Exception
-        return response.request.body
+        return result
 
 
 image_connection = ImageConnetion()
