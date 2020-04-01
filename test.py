@@ -10,4 +10,5 @@ from repository.images_repo import images_repo
 
 # print(image_connection.request('silvia', 'post', querys))
 print(images_repo.create_images(-120.70418, 38.32974, '2017-01-01', '2020-01-01'))
-print(images_repo.request_image())
+# print(images_repo.request_image())
+# print(images_repo.question_request('n'))
