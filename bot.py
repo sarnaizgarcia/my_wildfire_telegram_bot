@@ -1,7 +1,9 @@
 import telebot
 from telebot import types
 
-bot = telebot.TeleBot('978325959:AAEbFC7LndG8iK8lwXwot0WiiSoJW_4sI0s')
+from credentials import key
+
+bot = telebot.TeleBot(key)
 
 # https://github.com/eternnoir/pyTelegramBotAPI/blob/master/examples/step_example.py
 
